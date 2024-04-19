@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import axios from "axios";
 import Spinner from "@/components/Common/Spinner";
 
-const ApiCom = ({ showApi, setShowApi }) => {
+const ApiCom: React.FC<{
+  showApi: boolean;
+  setShowApi: React.Dispatch<React.SetStateAction<boolean>>;
+}> = ({ showApi, setShowApi }) => {
   const [dataset, setDataset] = useState("FGSM"); // Set initial value to "FGSM"
   const [model, setModel] = useState("Celebmodel.h5"); // Set initial value to "Celebmodel.h5"
   const [loading, setLoading] = useState(false);
-  const [response, setResponse] = useState(null);
+  const [response, setResponse] = useState<any>(null);
   const [errorMessage, setErrorMessage] = useState("");
-  const [back, setBack] = useState(false);
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
